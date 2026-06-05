@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import Image from "next/image"
 import { experiences } from "@/lib/data"
 
 export function Experience() {
@@ -176,18 +175,6 @@ export function Experience() {
                         <div className="mb-5">
                           <div className="flex items-center gap-4 mb-1">
                             <h3 className="font-display font-bold text-2xl text-[#EDE8DC]">{exp.role}</h3>
-                            {"logo" in exp && exp.logo && (
-                              <div className="shrink-0 h-8 w-auto flex items-center">
-                                <Image
-                                  src={exp.logo as string}
-                                  alt={exp.company}
-                                  width={80}
-                                  height={32}
-                                  className="h-7 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
-                                  style={{ filter: "brightness(0) invert(1)" }}
-                                />
-                              </div>
-                            )}
                           </div>
                           <p className="text-lg font-semibold mb-1" style={{ color: exp.color }}>{exp.company}</p>
                           {"projectTitle" in exp && exp.projectTitle && (
