@@ -206,7 +206,7 @@ export function About() {
             </div>
 
             {/* Education timeline */}
-            <div className="mt-10">
+            <div className="mt-10 pl-6">
               <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-6">Education</p>
               <div className="space-y-6 relative">
                 <motion.div

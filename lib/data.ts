@@ -28,7 +28,6 @@ export const experiences = [
     period: "Apr. – Aug. 2026",
     type: "Research",
     color: "#5BBFD8",
-    logo: "/logos/inria_logo.png",
     projectTitle: "AI-Driven Field Boundary Detection: Leveraging Satellite Imagery to Support Digital Agriculture Adoption",
     repos: [
       { label: "Pix2Poly AI4SmallFarms", url: "https://github.com/imanemn127/Pix2Poly_AI4SmallFarms" },
@@ -49,7 +48,6 @@ export const experiences = [
     period: "Jan. – Feb. 2025",
     type: "Industry",
     color: "#9490D4",
-    logo: "/logos/pellenc_logo.png",
     repos: [
       { label: "Internship_IA_PELLENC", url: "https://github.com/imanemn127/Internship_IA_PELLENC" },
     ],
