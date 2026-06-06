@@ -153,33 +153,6 @@ export function About() {
               duration={0.65}
             />
 
-            {/* Languages */}
-            <motion.div
-              className="mt-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.45 }}
-            >
-              <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-5">Languages</p>
-              <div className="lang-row flex flex-wrap gap-3">
-                {languages.map((lang) => (
-                  <motion.div
-                    key={lang.name}
-                    className="lang-card flex items-center gap-4 px-5 py-3 rounded-lg border border-[rgba(127,207,224,0.08)] bg-[rgba(13,12,30,0.5)]"
-                    whileHover={{
-                      borderColor: "rgba(127,207,224,0.28)",
-                      backgroundColor: "rgba(127,207,224,0.04)",
-                      y: -3,
-                    }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <span className="font-impact text-2xl leading-none text-[#7FCFE0]">{lang.level}</span>
-                    <div className="w-px h-7 bg-[rgba(255,255,255,0.06)]" />
-                    <p className="font-display font-semibold text-[#EDE8DC] text-sm tracking-wide">{lang.name}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
 
           {/* Right: facts + education */}
@@ -204,6 +177,36 @@ export function About() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Languages */}
+            <motion.div
+              className="mt-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-5">Languages</p>
+              <div className="lang-row flex flex-wrap gap-3">
+                {languages.map((lang) => (
+                  <motion.div
+                    key={lang.name}
+                    className="lang-card flex items-center gap-3 px-4 py-3 rounded-lg border border-[rgba(127,207,224,0.08)] bg-[rgba(13,12,30,0.5)]"
+                    whileHover={{
+                      borderColor: "rgba(127,207,224,0.28)",
+                      backgroundColor: "rgba(127,207,224,0.04)",
+                      y: -3,
+                    }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <span className="text-xl leading-none">{lang.flag}</span>
+                    <div className="w-px h-6 bg-[rgba(255,255,255,0.06)]" />
+                    <p className="font-display font-semibold text-[#EDE8DC] text-sm tracking-wide">{lang.name}</p>
+                    <div className="w-px h-6 bg-[rgba(255,255,255,0.06)]" />
+                    <span className="font-impact text-lg leading-none text-[#7FCFE0]">{lang.level}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
             {/* Education timeline */}
             <div className="mt-10 pl-6">
