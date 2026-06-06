@@ -54,7 +54,7 @@ export function Experience() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="experience" className="section-padding px-6" aria-label="Experience">
+    <section ref={sectionRef} id="experience" className="section-padding px-6 lg:px-16" aria-label="Experience">
       <div className="max-w-7xl mx-auto">
 
         {/* Label */}

@@ -81,7 +81,7 @@ export function About() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="about" className="section-padding px-6" aria-label="About">
+    <section ref={sectionRef} id="about" className="section-padding px-6 lg:px-16" aria-label="About">
       <div className="max-w-7xl mx-auto">
 
         {/* Label */}
@@ -101,7 +101,7 @@ export function About() {
           {/* Left: narrative */}
           <div>
             {/* Heading — editorial mix: impact + serif italic counterpoint */}
-            <div className="mb-8">
+            <div className="mb-12">
               <div style={{ overflow: "hidden" }}>
                 <motion.div
                   className="font-impact text-[clamp(3.5rem,7vw,6rem)] leading-[0.95] text-[#EDE8DC]"
@@ -139,7 +139,7 @@ export function About() {
             {/* Bio — AnimatedText word-by-word */}
             <AnimatedText
               text={personalInfo.bio}
-              className="text-[#8B8FA8] text-lg leading-relaxed mb-6 max-w-prose"
+              className="text-[#8B8FA8] text-lg leading-relaxed mb-10 max-w-prose"
               delay={0.15}
               stagger={0.025}
               duration={0.7}
@@ -157,10 +157,10 @@ export function About() {
 
           {/* Right: facts + education */}
           <div>
-            <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-8">Quick facts</p>
+            <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-12">Quick facts</p>
 
             {/* Facts with count-up */}
-            <div ref={factsRef} className="space-y-0">
+            <div ref={factsRef} className="space-y-2">
               {facts.map((f, i) => (
                 <motion.div
                   key={i}
@@ -180,12 +180,12 @@ export function About() {
 
             {/* Languages */}
             <motion.div
-              className="mt-10"
+              className="mt-14"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-5">Languages</p>
+              <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-6">Languages</p>
               <div className="lang-row flex flex-wrap gap-3">
                 {languages.map((lang) => (
                   <motion.div
@@ -209,7 +209,7 @@ export function About() {
             </motion.div>
 
             {/* Education timeline */}
-            <div className="mt-10 pl-6">
+            <div className="mt-14 pl-6">
               <p className="font-mono text-[10px] tracking-widest text-[#3D3F52] uppercase mb-6">Education</p>
               <div className="space-y-6 relative">
                 <motion.div

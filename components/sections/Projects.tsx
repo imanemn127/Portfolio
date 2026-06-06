@@ -11,7 +11,7 @@ export function Projects() {
   const isInView   = useInView(sectionRef, { once: true, margin: "-80px" })
 
   return (
-    <section ref={sectionRef} id="projects" className="section-padding px-6" aria-label="Projects">
+    <section ref={sectionRef} id="projects" className="section-padding px-6 lg:px-16" aria-label="Projects">
       <div className="max-w-7xl mx-auto">
 
         {/* Label */}
@@ -59,7 +59,7 @@ export function Projects() {
         </div>
 
         {/* Project grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} isInView={isInView} />
           ))}
@@ -97,7 +97,7 @@ function ProjectCard({ project, index, isInView }: { project: Project; index: nu
         transition={{ duration: 0.8, delay: 0.2 + index * 0.07, ease: [0.16, 1, 0.3, 1] }}
       />
 
-      <div className="p-7 flex flex-col flex-1">
+      <div className="p-9 flex flex-col flex-1">
         {/* Period + GitHub icon */}
         <div className="flex items-center justify-between mb-4">
           <span className="font-mono text-[10px] text-[#3D3F52] uppercase tracking-wider">{project.period}</span>
