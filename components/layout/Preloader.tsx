@@ -12,10 +12,10 @@ export function Preloader() {
   const [enterVisible, setEnterVisible] = useState(false)
 
   useEffect(() => {
-    // Show "Enter" button after 2s
-    const showEnter = setTimeout(() => setEnterVisible(true), 2000)
-    // Auto-dismiss after 9s if user hasn't clicked
-    const autoDismiss = setTimeout(() => setVisible(false), 9000)
+    // Show name after 1s
+    const showEnter = setTimeout(() => setEnterVisible(true), 1000)
+    // Auto-dismiss after 4s if user hasn't clicked
+    const autoDismiss = setTimeout(() => setVisible(false), 4000)
     return () => {
       clearTimeout(showEnter)
       clearTimeout(autoDismiss)
@@ -70,7 +70,7 @@ export function Preloader() {
               transition-all duration-500
               group-hover:tracking-[0.5em] group-hover:text-[#7FCFE0]
             ">
-              Enter
+              Imane Moumoun
             </span>
             {/* Animated underline */}
             <motion.span
