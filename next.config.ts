@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
-/* GitHub Pages serves under /imane-portfolio. Expose the same value to
+/* GitHub Pages serves under /Portfolio. Expose the same value to
    the client (NEXT_PUBLIC_BASE_PATH) so the asset() helper can prefix
    plain <img>/url() references that Next won't rewrite automatically. */
-const basePath = "/imane-portfolio";
+const basePath = "/Portfolio";
 
 const nextConfig: NextConfig = {
   output: "export",
