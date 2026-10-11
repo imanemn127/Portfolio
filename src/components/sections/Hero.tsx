@@ -311,7 +311,7 @@ function Folder() {
    TERMINAL — whoami typewriter
 ══════════════════════════════════════════════════════════ */
 const TERMINAL_LINES = [
-  { prompt: "$ whoami",    output: "AI & ML Engineer · ENS Paris-Saclay" },
+  { prompt: "$ whoami",    output: "AI Research Student · ENS Paris-Saclay" },
   { prompt: "$ ls interests/", output: "AI/maths/chess/languages/travel" },
 ];
 

@@ -48,7 +48,7 @@ function StickyNoteSection({ stickyNote, bio1pre, bio1into, bio1post, bio1badge,
             ))}
           </div>
           <div style={{ position: "relative", zIndex: 1, padding: "clamp(1.4rem,3vw,1.8rem) clamp(1.8rem,4vw,2.6rem) clamp(2rem,5vw,2.8rem)" }}>
-            <p style={{ fontFamily: "var(--font-handwriting)", fontSize: "clamp(17px,1.9vw,23px)", lineHeight: 1.85, color: "#3d2f0e", margin: 0 }}>
+            <p style={{ fontFamily: "var(--font-handwriting)", fontSize: "clamp(17px,1.9vw,23px)", lineHeight: 1.85, color: "#3d2f0e", margin: 0, whiteSpace: "pre-line" }}>
               {stickyNote}
             </p>
           </div>

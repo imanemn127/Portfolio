@@ -86,6 +86,7 @@ function EntryCard({
           color: "var(--text-2)",
           maxWidth: "55ch",
           marginBottom: "1rem",
+          whiteSpace: "pre-line",
         }}
       >
         {description}
@@ -179,7 +180,7 @@ type ExperienceTr = {
   };
 };
 
-/* Education timeline, oldest first */
+/* Education timeline, most recent first */
 function buildEducationData(tr: EducationTr): TimelineEntry[] {
   const e = tr.entries;
   const card = (entry: EntryTr & { coursework: readonly string[] }) => (
@@ -194,29 +195,16 @@ function buildEducationData(tr: EducationTr): TimelineEntry[] {
     />
   );
   return [
-    { title: "2022 – 24", content: card(e.prep) },
-    { title: "2024 – 27", content: card(e.mines) },
     { title: "2026 – 27", content: card(e.mva) },
+    { title: "2024 – 27", content: card(e.mines) },
+    { title: "2022 – 24", content: card(e.prep) },
   ];
 }
 
-/* Experience timeline, oldest first (tags are hardcoded here) */
+/* Experience timeline, most recent first (tags are hardcoded here) */
 function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
   const e = tr.entries;
   return [
-    {
-      title: "2025",
-      content: (
-        <EntryCard
-          label={tr.labelExp}
-          title={e.pellenc.title}
-          period={e.pellenc.period}
-          location={e.pellenc.location}
-          description={e.pellenc.description}
-          tags={["YOLOv8", "Python", "OpenCV", "Roboflow", "Dataset Annotation"]}
-        />
-      ),
-    },
     {
       title: "2026",
       content: (
@@ -227,6 +215,19 @@ function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
           location={e.inria.location}
           description={e.inria.description}
           tags={["Vision Transformers", "Multi-task CNNs", "Sentinel-2", "Geospatial Pipelines"]}
+        />
+      ),
+    },
+    {
+      title: "2025",
+      content: (
+        <EntryCard
+          label={tr.labelExp}
+          title={e.pellenc.title}
+          period={e.pellenc.period}
+          location={e.pellenc.location}
+          description={e.pellenc.description}
+          tags={["YOLOv8", "Python", "OpenCV", "Roboflow", "Dataset Annotation"]}
         />
       ),
     },
