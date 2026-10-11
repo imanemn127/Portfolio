@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,18 +14,18 @@ function EntryCard({
   period,
   location,
   description,
-  tags,
-  incoming,
-  incomingLabel = "incoming",
+  tags = [],
+  coursework = [],
+  courseworkLabel,
 }: {
   label: string;
   title: string;
   period: string;
   location: string;
   description: string;
-  tags: string[];
-  incoming?: boolean;
-  incomingLabel?: string;
+  tags?: readonly string[];
+  coursework?: readonly string[];
+  courseworkLabel?: string;
 }) {
   return (
     <article
@@ -44,26 +44,8 @@ function EntryCard({
           textTransform: "uppercase",
           color: "var(--accent)",
           marginBottom: "0.6rem",
-          display: "flex",
-          alignItems: "center",
-          gap: "0.4rem",
         }}
       >
-        {incoming && (
-          <span
-            style={{
-              background: "var(--accent)",
-              color: "var(--bg)",
-              borderRadius: "2px",
-              padding: "0.1rem 0.35rem",
-              fontSize: "0.5rem",
-              fontWeight: 700,
-              letterSpacing: "0.15em",
-            }}
-          >
-            {incomingLabel}
-          </span>
-        )}
         {label}
       </div>
 
@@ -109,140 +91,166 @@ function EntryCard({
         {description}
       </p>
 
+      {/* Coursework */}
+      {coursework.length > 0 && (
+        <div style={{ marginBottom: tags.length > 0 ? "1rem" : 0 }}>
+          {courseworkLabel && (
+            <div
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.55rem",
+                letterSpacing: "0.25em",
+                textTransform: "uppercase",
+                color: "var(--text-3)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              {courseworkLabel}
+            </div>
+          )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", maxWidth: "60ch" }}>
+            {coursework.map((course) => (
+              <span
+                key={course}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.68rem",
+                  letterSpacing: "0.03em",
+                  padding: "0.25rem 0.6rem",
+                  border: "1px solid var(--accent)",
+                  borderRadius: "3px",
+                  color: "var(--text-2)",
+                }}
+              >
+                {course}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Tags */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
-        {tags.map((tag) => (
-          <span
-            key={tag}
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "0.64rem",
-              letterSpacing: "0.05em",
-              padding: "0.2rem 0.55rem",
-              border: "1px solid var(--border)",
-              borderRadius: "3px",
-              color: "var(--text-3)",
-              background: "var(--surface)",
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      {tags.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.64rem",
+                letterSpacing: "0.05em",
+                padding: "0.2rem 0.55rem",
+                border: "1px solid var(--border)",
+                borderRadius: "3px",
+                color: "var(--text-3)",
+                background: "var(--surface)",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
 
-type ExperienceTr = {
-  label: string;
+type EntryTr = { title: string; period: string; location: string; description: string };
+
+type EducationTr = {
   heading1: string;
   heading2: string;
   labelEdu: string;
-  labelExp: string;
-  incoming: string;
+  courseworkLabel: string;
   entries: {
-    prep: { title: string; period: string; location: string; description: string };
-    mines2024: { title: string; period: string; location: string; description: string };
-    minesCurrent: { title: string; period: string; location: string; description: string };
-    pellenc: { title: string; period: string; location: string; description: string };
-    inria: { title: string; period: string; location: string; description: string };
-    ens: { title: string; period: string; location: string; description: string };
+    prep: EntryTr & { coursework: readonly string[] };
+    mines: EntryTr & { coursework: readonly string[] };
+    mva: EntryTr & { coursework: readonly string[] };
   };
 };
 
-/* Build the merged timeline entries grouped by year, oldest first */
-function buildCarriereData(tr: ExperienceTr): TimelineEntry[] {
+type ExperienceTr = {
+  heading1: string;
+  heading2: string;
+  labelExp: string;
+  entries: {
+    pellenc: EntryTr;
+    inria: EntryTr;
+  };
+};
+
+/* Education timeline, oldest first */
+function buildEducationData(tr: EducationTr): TimelineEntry[] {
+  const e = tr.entries;
+  const card = (entry: EntryTr & { coursework: readonly string[] }) => (
+    <EntryCard
+      label={tr.labelEdu}
+      title={entry.title}
+      period={entry.period}
+      location={entry.location}
+      description={entry.description}
+      coursework={entry.coursework}
+      courseworkLabel={tr.courseworkLabel}
+    />
+  );
+  return [
+    { title: "2022 – 24", content: card(e.prep) },
+    { title: "2024 – 27", content: card(e.mines) },
+    { title: "2026 – 27", content: card(e.mva) },
+  ];
+}
+
+/* Experience timeline, oldest first (tags are hardcoded here) */
+function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
   const e = tr.entries;
   return [
     {
-      title: "2022 – 24",
-      content: (
-        <EntryCard
-          label={tr.labelEdu}
-          title={e.prep.title}
-          period={e.prep.period}
-          location={e.prep.location}
-          description={e.prep.description}
-          tags={["Mathematics", "Physics", "Python", "Competitive Exam"]}
-        />
-      ),
-    },
-    {
-      title: "2024",
-      content: (
-        <EntryCard
-          label={tr.labelEdu}
-          title={e.mines2024.title}
-          period={e.mines2024.period}
-          location={e.mines2024.location}
-          description={e.mines2024.description}
-          tags={["Grande École", "Engineering", "Competitive Entrance"]}
-        />
-      ),
-    },
-    {
       title: "2025",
       content: (
-        <div>
-          <EntryCard
-            label={tr.labelEdu}
-            title={e.minesCurrent.title}
-            period={e.minesCurrent.period}
-            location={e.minesCurrent.location}
-            description={e.minesCurrent.description}
-            tags={["Machine Learning", "Signal Processing", "Python", "Deep Learning"]}
-          />
-          <EntryCard
-            label={tr.labelExp}
-            title={e.pellenc.title}
-            period={e.pellenc.period}
-            location={e.pellenc.location}
-            description={e.pellenc.description}
-            tags={["YOLOv8", "Python", "OpenCV", "Roboflow", "Dataset Annotation"]}
-          />
-        </div>
+        <EntryCard
+          label={tr.labelExp}
+          title={e.pellenc.title}
+          period={e.pellenc.period}
+          location={e.pellenc.location}
+          description={e.pellenc.description}
+          tags={["YOLOv8", "Python", "OpenCV", "Roboflow", "Dataset Annotation"]}
+        />
       ),
     },
     {
       title: "2026",
       content: (
-        <div>
-          <EntryCard
-            label={tr.labelExp}
-            title={e.inria.title}
-            period={e.inria.period}
-            location={e.inria.location}
-            description={e.inria.description}
-            tags={["PyTorch", "Transformers", "GNN", "Satellite Imagery", "Python"]}
-          />
-          <EntryCard
-            label={`✦ ${tr.labelEdu}`}
-            title={e.ens.title}
-            period={e.ens.period}
-            location={e.ens.location}
-            description={e.ens.description}
-            tags={["Machine Learning", "Deep Learning", "Statistics", "Research"]}
-            incoming
-            incomingLabel={tr.incoming}
-          />
-        </div>
+        <EntryCard
+          label={tr.labelExp}
+          title={e.inria.title}
+          period={e.inria.period}
+          location={e.inria.location}
+          description={e.inria.description}
+          tags={["Vision Transformers", "Multi-task CNNs", "Sentinel-2", "Geospatial Pipelines"]}
+        />
       ),
     },
   ];
 }
 
-export function Experience() {
-  const { lang } = useLang();
-  const tr = t[lang].experience;
+function CareerSection({
+  id,
+  heading1,
+  heading2,
+  data,
+  paddingBottom,
+}: {
+  id: string;
+  heading1: string;
+  heading2: string;
+  data: TimelineEntry[];
+  paddingBottom: string;
+}) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const ctx = gsap.context(() => {
-      gsap.from(".car-label", {
-        scrollTrigger: { trigger: ".car-label", start: "top 88%", once: true },
-        opacity: 0, y: 14, duration: 0.6, ease: "power3.out",
-      });
       gsap.from(".car-heading .ci", {
         scrollTrigger: { trigger: ".car-heading", start: "top 85%", once: true },
         yPercent: 108, duration: 1, stagger: 0.1, ease: "power4.out",
@@ -257,15 +265,13 @@ export function Experience() {
     </div>
   );
 
-  const data = buildCarriereData(tr);
-
   return (
     <section
       ref={ref}
-      id="experience"
-      aria-labelledby="car-h"
+      id={id}
+      aria-labelledby={`${id}-h`}
       style={{
-        padding: "clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 3.5rem) clamp(6rem, 14vw, 12rem)",
+        padding: `clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 3.5rem) ${paddingBottom}`,
         position: "relative",
         zIndex: 1,
         marginTop: "-60px",
@@ -279,49 +285,76 @@ export function Experience() {
         starColor="rgba(255,255,255,1)"
         bgColor="rgba(20,14,10,1)"
         speed={0.5}
-        quantity={600}
+        quantity={300}
       />
       <div style={{ position: "relative", zIndex: 1 }}>
-      <div id="car-h" className="car-heading" style={{ marginBottom: "clamp(3rem, 7vw, 6rem)" }}>
-        {/* main heading */}
-        <h2 id="car-h-text" style={{ margin: 0 }}>
-          {/* "Career" â€” massive outlined */}
-          <Clip>
-            <span style={{
-              display: "block",
-              fontFamily: "var(--font-display)",
-              fontWeight: 900,
-              fontSize: "clamp(3rem, 11vw, 10rem)",
-              lineHeight: 0.88,
-              letterSpacing: "-0.04em",
-              WebkitTextStroke: "1.5px var(--text)",
-              color: "transparent",
-            }}>
-              {tr.heading1}
-            </span>
-          </Clip>
+        <div id={`${id}-h`} className="car-heading" style={{ marginBottom: "clamp(3rem, 7vw, 6rem)" }}>
+          <h2 style={{ margin: 0 }}>
+            {/* Massive outlined heading */}
+            <Clip>
+              <span style={{
+                display: "block",
+                fontFamily: "var(--font-display)",
+                fontWeight: 900,
+                fontSize: "clamp(3rem, 11vw, 10rem)",
+                lineHeight: 0.88,
+                letterSpacing: "-0.04em",
+                WebkitTextStroke: "1.5px var(--text)",
+                color: "transparent",
+              }}>
+                {heading1}
+              </span>
+            </Clip>
 
-          {/* "& training" â€” filled serif, offset right */}
-          <Clip>
-            <span style={{
-              display: "block",
-              fontFamily: "var(--font-serif)",
-              fontWeight: 400,
-              fontStyle: "italic",
-              fontSize: "clamp(2rem, 8.5vw, 8rem)",
-              lineHeight: 1,
-              letterSpacing: "-0.02em",
-              color: "var(--accent)",
-              paddingLeft: "clamp(0.5rem, 6vw, 6rem)",
-            }}>
-              {tr.heading2}
-            </span>
-          </Clip>
-        </h2>
-      </div>
+            {/* Filled serif subheading, offset right */}
+            <Clip>
+              <span style={{
+                display: "block",
+                fontFamily: "var(--font-serif)",
+                fontWeight: 400,
+                fontStyle: "italic",
+                fontSize: "clamp(2rem, 8.5vw, 8rem)",
+                lineHeight: 1,
+                letterSpacing: "-0.02em",
+                color: "var(--accent)",
+                paddingLeft: "clamp(0.5rem, 6vw, 6rem)",
+              }}>
+                {heading2}
+              </span>
+            </Clip>
+          </h2>
+        </div>
 
         <Timeline data={data} />
       </div>
     </section>
+  );
+}
+
+export function Education() {
+  const { lang } = useLang();
+  const tr = t[lang].education;
+  return (
+    <CareerSection
+      id="education"
+      heading1={tr.heading1}
+      heading2={tr.heading2}
+      data={buildEducationData(tr)}
+      paddingBottom="clamp(3rem, 6vw, 5rem)"
+    />
+  );
+}
+
+export function Experience() {
+  const { lang } = useLang();
+  const tr = t[lang].experience;
+  return (
+    <CareerSection
+      id="experience"
+      heading1={tr.heading1}
+      heading2={tr.heading2}
+      data={buildExperienceData(tr)}
+      paddingBottom="clamp(6rem, 14vw, 12rem)"
+    />
   );
 }

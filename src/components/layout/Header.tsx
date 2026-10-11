@@ -402,10 +402,11 @@ export function Header() {
               <ul className="menu-list">
                 {[
                   { shape: "1", href: "#about",      label: nav.about      },
-                  { shape: "2", href: "#experience", label: nav.experience },
-                  { shape: "3", href: "#projects",   label: nav.projects   },
-                  { shape: "4", href: "#skills",     label: nav.skills     },
-                  { shape: "5", href: "#contact",    label: nav.contact    },
+                  { shape: "2", href: "#education",  label: nav.education  },
+                  { shape: "3", href: "#experience", label: nav.experience },
+                  { shape: "4", href: "#projects",   label: nav.projects   },
+                  { shape: "5", href: "#skills",     label: nav.skills     },
+                  { shape: "1", href: "#contact",    label: nav.contact    },
                 ].map(({ shape, href, label }) => (
                   <li key={href} className="menu-list-item" data-shape={shape}>
                     <a href={href} className="nav-link w-inline-block" onClick={(e) => { e.preventDefault(); scrollTo(href); }}>
