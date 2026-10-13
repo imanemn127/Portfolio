@@ -1,7 +1,7 @@
 ﻿"use client";
 import React, { useRef, useState, useEffect } from "react";
 import { useScroll, useTransform, AnimatePresence, motion } from "framer-motion";
-const EMAIL = "imanemn127@gmail.com";
+const EMAIL = "imane.moumoun@ens-paris-saclay.fr";
 import { useLang, t } from "@/lib/i18n";
 import { GoogleGeminiEffect } from "@/components/ui/GoogleGeminiEffect";
 import ContactCards, { LinkedinIcon, XIcon } from "@/components/ui/ContactCards";
