@@ -17,15 +17,17 @@ function EntryCard({
   tags = [],
   coursework = [],
   courseworkLabel,
+  links = [],
 }: {
   label: string;
   title: string;
   period: string;
-  location: string;
+  location?: string;
   description: string;
   tags?: readonly string[];
   coursework?: readonly string[];
   courseworkLabel?: string;
+  links?: readonly { label: string; href: string }[];
 }) {
   return (
     <article
@@ -74,7 +76,7 @@ function EntryCard({
           marginBottom: "0.9rem",
         }}
       >
-        {period} · {location}
+        {location ? `${period} · ${location}` : period}
       </div>
 
       {/* Description */}
@@ -152,21 +154,48 @@ function EntryCard({
           ))}
         </div>
       )}
+
+      {/* GitHub links */}
+      {links.length > 0 && (
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem 1rem", marginTop: "1rem" }}>
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.68rem",
+                letterSpacing: "0.04em",
+                color: "var(--accent)",
+                textDecoration: "none",
+                borderBottom: "1px solid var(--accent)",
+                paddingBottom: "1px",
+              }}
+            >
+              {link.label} ↗
+            </a>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
 
-type EntryTr = { title: string; period: string; location: string; description: string };
+type EntryTr = { title: string; period: string; location?: string; description: string };
 
 type EducationTr = {
   heading1: string;
   heading2: string;
   labelEdu: string;
+  labelCert: string;
   courseworkLabel: string;
   entries: {
     prep: EntryTr & { coursework: readonly string[] };
     mines: EntryTr & { coursework: readonly string[] };
     mva: EntryTr & { coursework: readonly string[] };
+    cert: EntryTr;
   };
 };
 
@@ -174,9 +203,12 @@ type ExperienceTr = {
   heading1: string;
   heading2: string;
   labelExp: string;
+  labelLead: string;
   entries: {
     pellenc: EntryTr;
     inria: EntryTr;
+    honors: EntryTr;
+    speaker: EntryTr;
   };
 };
 
@@ -196,6 +228,17 @@ function buildEducationData(tr: EducationTr): TimelineEntry[] {
   );
   return [
     { title: "2026 – 27", content: card(e.mva) },
+    {
+      title: "2026",
+      content: (
+        <EntryCard
+          label={tr.labelCert}
+          title={e.cert.title}
+          period={e.cert.period}
+          description={e.cert.description}
+        />
+      ),
+    },
     { title: "2024 – 27", content: card(e.mines) },
     { title: "2022 – 24", content: card(e.prep) },
   ];
@@ -215,6 +258,22 @@ function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
           location={e.inria.location}
           description={e.inria.description}
           tags={["Vision Transformers", "Multi-task CNNs", "Sentinel-2", "Geospatial Pipelines"]}
+          links={[
+            { label: "Pix2Poly · P3 image only", href: "https://github.com/imanemn127/Pix2poly_P3_image_only" },
+            { label: "Pix2Poly · AI4SmallFarms", href: "https://github.com/imanemn127/Pix2Poly_AI4SmallFarms" },
+            { label: "PLR-Net · AI4SmallFarms NL", href: "https://github.com/imanemn127/PLR_Net_AI4SmallFarms_NL" },
+          ]}
+        />
+      ),
+    },
+    {
+      title: "2025 – 26",
+      content: (
+        <EntryCard
+          label={tr.labelLead}
+          title={e.honors.title}
+          period={e.honors.period}
+          description={e.honors.description}
         />
       ),
     },
@@ -228,6 +287,18 @@ function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
           location={e.pellenc.location}
           description={e.pellenc.description}
           tags={["YOLOv8", "Python", "OpenCV", "Roboflow", "Dataset Annotation"]}
+          links={[{ label: "Internship repository", href: "https://github.com/imanemn127/Internship_IA_PELLENC" }]}
+        />
+      ),
+    },
+    {
+      title: "2019 – 20",
+      content: (
+        <EntryCard
+          label={tr.labelLead}
+          title={e.speaker.title}
+          period={e.speaker.period}
+          description={e.speaker.description}
         />
       ),
     },

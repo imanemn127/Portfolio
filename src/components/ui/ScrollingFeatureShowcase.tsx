@@ -40,41 +40,63 @@ const TOOLS_ROW2: Tool[] = [
 
 const SLIDES = [
   {
-    id: "multimodal-rag",
+    id: "nlp-llm-post-training",
     index: "01",
-    title: "Agentic Multi-Modal RAG",
+    title: "Seq2Seq Translation & LLM Post-Training",
     description:
-      "Multi-modal RAG system for scientific paper analysis using structured PDF extraction, dense vector retrieval, and agentic reasoning chains via LlamaIndex. End-to-end FastAPI + Streamlit deployment.",
-    tags: ["LlamaIndex", "FastAPI", "RAG", "Python"],
+      "GRU encoder–decoder with Luong attention for EN→FR translation. Qwen3.5-0.8B fine-tuned with QLoRA and Qwen3-0.6B post-trained with DPO and GRPO on GSM8K, improving strict-format accuracy from 10% to 34.5%.",
+    tags: ["QLoRA", "DPO", "GRPO", "Seq2Seq"],
     year: "2026",
     github: "https://github.com/imanemn127",
+    image: "/project/06-nlp.jpg",
+  },
+  {
+    id: "speech-pulse-detection",
+    index: "02",
+    title: "Speech Pitch Estimation & Pulse Detection",
+    description:
+      "Speech analysis with STFT spectrograms and a pitch estimator built from scratch. Spectrogram-based detector for pulses buried in Gaussian noise, reaching 99.8% precision and 98.5% recall on 10K signals.",
+    tags: ["STFT", "Pitch Estimation", "Pulse Detection", "Signal Processing"],
+    year: "2026",
+    github: "https://github.com/imanemn127",
+    image: "/project/07-speech.jpg",
+  },
+  {
+    id: "multimodal-rag",
+    index: "03",
+    title: "Multi-Modal RAG",
+    description:
+      "RAG system for question answering over scientific PDFs with page citations: PDF parsing, MiniLM embeddings with ChromaDB, query decomposition, and a vision-language model to caption figures and transcribe tables. FastAPI backend and Streamlit interface.",
+    tags: ["ChromaDB", "MiniLM", "FastAPI", "Streamlit"],
+    year: "2026",
+    github: "https://github.com/imanemn127/Multimodal-Research-Assistant",
     image: "/project/01-rag.jpg",
   },
   {
-    id: "carepath-ai",
-    index: "02",
-    title: "CarePath AI",
-    description:
-      "10K+ synthetic Indian healthcare records generated with an LLM validation pipeline. Geocoding system reaching 98% resolution rate. Winner — Hack-Nation Global AI Hackathon.",
-    tags: ["LLM", "Synthetic Data", "Geocoding", "Streamlit"],
-    year: "2026",
-    github: "https://github.com/imanemn127",
-    image: "/project/02-carepath.jpg",
-  },
-  {
     id: "predictive-maintenance",
-    index: "03",
+    index: "04",
     title: "Predictive Industrial Maintenance",
     description:
       "REINFORCE-based RL agent for maintenance scheduling combined with a neural fault classifier. Deployed on STM32L4R9 via TensorFlow Lite — full research-to-silicon pipeline.",
     tags: ["Reinforcement Learning", "TFLite", "STM32", "Edge AI"],
     year: "2026",
-    github: "https://github.com/imanemn127",
+    github: "https://github.com/imanemn127/RL-Edge-AI-Fault-Detection",
     image: "/project/03-maintenance.jpg",
   },
   {
+    id: "semiconductor-modelling",
+    index: "05",
+    title: "Semiconductor Cycle-Time Modelling",
+    description:
+      "Gamma GLM modelling of semiconductor manufacturing cycle times in R, with maximum-likelihood estimation and simulation-based validation against real production data.",
+    tags: ["Gamma GLM", "R", "Maximum Likelihood", "Simulation"],
+    year: "2026",
+    github: "https://github.com/imanemn127",
+    image: "/project/08-stats.jpg",
+  },
+  {
     id: "ecg-diagnosis",
-    index: "04",
+    index: "06",
     title: "Cardiac Rhythm Diagnosis",
     description:
       "Comparative evaluation of ML classifiers on noisy ECG signals with PCA-based dimensionality reduction and clustering analysis. Benchmarked accuracy across five classifier families.",
@@ -85,7 +107,7 @@ const SLIDES = [
   },
   {
     id: "iot-warehouse",
-    index: "05",
+    index: "07",
     title: "IoT Environmental Monitoring",
     description:
       "STM32-based warehouse system with on-device logistic regression for leak detection and air-quality analysis. Real-time data transmission via LoRaWAN to cloud dashboard.",
