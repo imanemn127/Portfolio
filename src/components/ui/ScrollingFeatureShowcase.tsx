@@ -42,23 +42,23 @@ const SLIDES = [
   {
     id: "nlp-llm-post-training",
     index: "01",
-    title: "Seq2Seq Translation & LLM Post-Training",
+    title: "LLM Post-Training",
     description:
-      "GRU encoder–decoder with Luong attention for EN→FR translation. Qwen3.5-0.8B fine-tuned with QLoRA and Qwen3-0.6B post-trained with DPO and GRPO on GSM8K, improving strict-format accuracy from 10% to 34.5%.",
-    tags: ["QLoRA", "DPO", "GRPO", "Seq2Seq"],
+      "GRU encoder–decoder with Luong attention for EN→FR translation. QLoRA fine-tuning of Qwen3.5-0.8B, then DPO and GRPO post-training of Qwen3-0.6B on GSM8K: strict-format accuracy from 10% to 34.5%.",
+    tags: ["M2 MVA Course", "QLoRA", "DPO", "GRPO"],
     year: "2026",
-    github: "https://github.com/imanemn127",
+    github: null,
     image: "/project/06-nlp.jpg",
   },
   {
     id: "speech-pulse-detection",
     index: "02",
-    title: "Speech Pitch Estimation & Pulse Detection",
+    title: "Speech & Pulse Detection",
     description:
-      "Speech analysis with STFT spectrograms and a pitch estimator built from scratch. Spectrogram-based detector for pulses buried in Gaussian noise, reaching 99.8% precision and 98.5% recall on 10K signals.",
-    tags: ["STFT", "Pitch Estimation", "Pulse Detection", "Signal Processing"],
+      "Pitch estimator built from scratch on STFT spectrograms, plus a detector for pulses buried in Gaussian noise: 99.8% precision and 98.5% recall on 10K signals, vs 59% and 93% for an energy threshold.",
+    tags: ["M2 MVA Course", "STFT", "Pitch Estimation", "Signal Processing"],
     year: "2026",
-    github: "https://github.com/imanemn127",
+    github: null,
     image: "/project/07-speech.jpg",
   },
   {
@@ -86,12 +86,12 @@ const SLIDES = [
   {
     id: "semiconductor-modelling",
     index: "05",
-    title: "Semiconductor Cycle-Time Modelling",
+    title: "Cycle-Time Modelling",
     description:
-      "Gamma GLM modelling of semiconductor manufacturing cycle times in R, with maximum-likelihood estimation and simulation-based validation against real production data.",
+      "Gamma GLM of semiconductor cycle times in R: maximum-likelihood estimation and simulation-based validation against real production data.",
     tags: ["Gamma GLM", "R", "Maximum Likelihood", "Simulation"],
     year: "2026",
-    github: "https://github.com/imanemn127",
+    github: null,
     image: "/project/08-stats.jpg",
   },
   {
@@ -356,6 +356,7 @@ export function ScrollingFeatureShowcase() {
 
             {/* CTA — editorial text link */}
             <div style={{ display: "flex", alignItems: "center", gap: "2rem", marginTop: "auto" }}>
+              {current.github && (
               <a
                 href={current.github}
                 target="_blank"
@@ -395,6 +396,7 @@ export function ScrollingFeatureShowcase() {
                   />
                 </svg>
               </a>
+              )}
 
               <span
                 style={{
