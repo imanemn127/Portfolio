@@ -189,13 +189,11 @@ type EducationTr = {
   heading1: string;
   heading2: string;
   labelEdu: string;
-  labelCert: string;
   courseworkLabel: string;
   entries: {
     prep: EntryTr & { coursework: readonly string[] };
     mines: EntryTr & { coursework: readonly string[] };
     mva: EntryTr & { coursework: readonly string[] };
-    cert: EntryTr;
   };
 };
 
@@ -203,10 +201,19 @@ type ExperienceTr = {
   heading1: string;
   heading2: string;
   labelExp: string;
-  labelLead: string;
   entries: {
     pellenc: EntryTr;
     inria: EntryTr;
+  };
+};
+
+type CertificationsTr = {
+  heading1: string;
+  heading2: string;
+  labelCert: string;
+  labelAward: string;
+  entries: {
+    ibm: EntryTr;
     honors: EntryTr;
     speaker: EntryTr;
   };
@@ -228,17 +235,6 @@ function buildEducationData(tr: EducationTr): TimelineEntry[] {
   );
   return [
     { title: "2026 – 27", content: card(e.mva) },
-    {
-      title: "2026",
-      content: (
-        <EntryCard
-          label={tr.labelCert}
-          title={e.cert.title}
-          period={e.cert.period}
-          description={e.cert.description}
-        />
-      ),
-    },
     { title: "2024 – 27", content: card(e.mines) },
     { title: "2022 – 24", content: card(e.prep) },
   ];
@@ -267,17 +263,6 @@ function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
       ),
     },
     {
-      title: "2025 – 26",
-      content: (
-        <EntryCard
-          label={tr.labelLead}
-          title={e.honors.title}
-          period={e.honors.period}
-          description={e.honors.description}
-        />
-      ),
-    },
-    {
       title: "2025",
       content: (
         <EntryCard
@@ -291,11 +276,40 @@ function buildExperienceData(tr: ExperienceTr): TimelineEntry[] {
         />
       ),
     },
+  ];
+}
+
+/* Certifications & awards timeline, most recent first */
+function buildCertificationsData(tr: CertificationsTr): TimelineEntry[] {
+  const e = tr.entries;
+  return [
+    {
+      title: "2026",
+      content: (
+        <EntryCard
+          label={tr.labelCert}
+          title={e.ibm.title}
+          period={e.ibm.period}
+          description={e.ibm.description}
+        />
+      ),
+    },
+    {
+      title: "2025 – 26",
+      content: (
+        <EntryCard
+          label={tr.labelAward}
+          title={e.honors.title}
+          period={e.honors.period}
+          description={e.honors.description}
+        />
+      ),
+    },
     {
       title: "2019 – 20",
       content: (
         <EntryCard
-          label={tr.labelLead}
+          label={tr.labelAward}
           title={e.speaker.title}
           period={e.speaker.period}
           description={e.speaker.description}
@@ -426,6 +440,20 @@ export function Experience() {
       heading1={tr.heading1}
       heading2={tr.heading2}
       data={buildExperienceData(tr)}
+      paddingBottom="clamp(3rem, 6vw, 5rem)"
+    />
+  );
+}
+
+export function Certifications() {
+  const { lang } = useLang();
+  const tr = t[lang].certifications;
+  return (
+    <CareerSection
+      id="certifications"
+      heading1={tr.heading1}
+      heading2={tr.heading2}
+      data={buildCertificationsData(tr)}
       paddingBottom="clamp(6rem, 14vw, 12rem)"
     />
   );

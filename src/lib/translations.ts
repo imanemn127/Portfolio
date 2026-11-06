@@ -35,7 +35,6 @@ export const t = {
       heading2: "& coursework",
       labelEdu: "Education",
       courseworkLabel: "Coursework",
-      labelCert: "Certification",
       entries: {
         prep: {
           title: "Preparatory Classes MPSI / MP · LYMED",
@@ -68,19 +67,13 @@ export const t = {
             "Reinforcement Learning",
           ],
         },
-        cert: {
-          title: "IBM AI Engineering Professional Certificate",
-          period: "Jul. 2026",
-          description: "13-course specialization covering Machine Learning with Python, Deep Learning (Keras, TensorFlow, PyTorch), Generative AI & LLMs (Transformers, fine-tuning), and AI agents with RAG and LangChain.",
-        },
       },
     },
     experience: {
       label: "Experience",
       heading1: "Experience",
-      heading2: "& leadership",
+      heading2: "& internships",
       labelExp: "Experience",
-      labelLead: "Leadership & Awards",
       entries: {
         pellenc: {
           title: "AI Intern · PELLENC",
@@ -93,6 +86,20 @@ export const t = {
           period: "Apr. – Aug. 2026",
           location: "Montpellier, France",
           description: "Adaptation of deep learning models, notably Vision Transformers and multi-task CNNs, for automatic agricultural parcel extraction from Sentinel-2 satellite imagery, with architecture diagnosis and optimization, geospatial data pipeline development, and raster-to-vector post-processing.",
+        },
+      },
+    },
+    certifications: {
+      label: "Certifications",
+      heading1: "Certifications",
+      heading2: "& awards",
+      labelCert: "Certification",
+      labelAward: "Award",
+      entries: {
+        ibm: {
+          title: "IBM AI Engineering Professional Certificate",
+          period: "Jul. 2026",
+          description: "13-course specialization covering Machine Learning with Python, Deep Learning (Keras, TensorFlow, PyTorch), Generative AI & LLMs (Transformers, fine-tuning), and AI agents with RAG and LangChain.",
         },
         honors: {
           title: "Honorary Diploma for Student Involvement",
@@ -190,7 +197,6 @@ export const t = {
       heading2: "& cours suivis",
       labelEdu: "Formation",
       courseworkLabel: "Cours suivis",
-      labelCert: "Certification",
       entries: {
         prep: {
           title: "Classes Préparatoires MPSI / MP · LYMED",
@@ -223,19 +229,13 @@ export const t = {
             "Apprentissage par Renforcement",
           ],
         },
-        cert: {
-          title: "IBM AI Engineering Professional Certificate",
-          period: "Juil. 2026",
-          description: "Spécialisation de 13 cours couvrant le Machine Learning avec Python, le Deep Learning (Keras, TensorFlow, PyTorch), l'IA générative et les LLMs (Transformers, fine-tuning), et les agents IA avec RAG et LangChain.",
-        },
       },
     },
     experience: {
       label: "Expérience",
       heading1: "Expérience",
-      heading2: "& engagement",
+      heading2: "& stages",
       labelExp: "Expérience",
-      labelLead: "Leadership & Distinctions",
       entries: {
         pellenc: {
           title: "Stagiaire IA · PELLENC",
@@ -248,6 +248,20 @@ export const t = {
           period: "Avr. – Août 2026",
           location: "Montpellier, France",
           description: "Adaptation de modèles de deep learning, notamment des Vision Transformers et des CNN multi-tâches, pour l'extraction automatique de parcelles agricoles à partir d'images satellitaires Sentinel-2, avec diagnostic et optimisation d'architecture, développement de pipelines de données géospatiales et post-traitement raster vers vecteur.",
+        },
+      },
+    },
+    certifications: {
+      label: "Certifications",
+      heading1: "Certifications",
+      heading2: "& distinctions",
+      labelCert: "Certification",
+      labelAward: "Distinction",
+      entries: {
+        ibm: {
+          title: "IBM AI Engineering Professional Certificate",
+          period: "Juil. 2026",
+          description: "Spécialisation de 13 cours couvrant le Machine Learning avec Python, le Deep Learning (Keras, TensorFlow, PyTorch), l'IA générative et les LLMs (Transformers, fine-tuning), et les agents IA avec RAG et LangChain.",
         },
         honors: {
           title: "Diplôme d'honneur pour l'engagement étudiant",

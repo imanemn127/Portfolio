@@ -11,6 +11,7 @@ import { YanCursor } from "@/components/ui/YanCursor";
 // Below-fold sections — loaded as separate JS chunks, not in the initial bundle
 const About = dynamic(() => import("@/components/sections/About").then(m => ({ default: m.About })));
 const Education = dynamic(() => import("@/components/sections/Experience").then(m => ({ default: m.Education })));
+const Certifications = dynamic(() => import("@/components/sections/Experience").then(m => ({ default: m.Certifications })));
 const Experience = dynamic(() => import("@/components/sections/Experience").then(m => ({ default: m.Experience })));
 const AliceScrollStory = dynamic(() => import("@/components/ui/AliceScrollStory").then(m => ({ default: m.AliceScrollStory })));
 const CurveDivider = dynamic(() => import("@/components/layout/CurveDivider").then(m => ({ default: m.CurveDivider })));
@@ -41,6 +42,7 @@ export default function Home() {
           <About />
           <Education />
           <Experience />
+          <Certifications />
           <AliceScrollStory
             wordA={trP.aliceWordA}
             wordB={trP.aliceWordB}
