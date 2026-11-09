@@ -19,7 +19,6 @@ const TOOLS_ROW1: Tool[] = [
   { name: "TensorFlow",   icon: siTensorflow,         hex: "#FF6F00" },
   { name: "Keras",        icon: siKeras,              hex: "#D00000" },
   { name: "Scikit-learn", icon: siScikitlearn,        hex: "#F7931E" },
-  { name: "LlamaIndex",   icon: null,                 hex: "#6B4FBB" },
   { name: "FastAPI",      icon: siFastapi,            hex: "#009688" },
   { name: "Streamlit",    icon: siStreamlit,          hex: "#FF4B4B" },
   { name: "NumPy",        icon: siNumpy,              hex: "#013243" },
@@ -77,7 +76,7 @@ const SLIDES = [
     index: "04",
     title: "Predictive Industrial Maintenance",
     description:
-      "REINFORCE-based RL agent for maintenance scheduling combined with a neural fault classifier. Deployed on STM32L4R9 via TensorFlow Lite — full research-to-silicon pipeline.",
+      "REINFORCE agent for maintenance scheduling in a simulated degradation environment, benchmarked against rule-based policies, plus a DNN fault classifier on AI4I 2020 (macro-F1 0.67 → 0.88 with SMOTE). The classifier runs on an STM32L4R9 via TensorFlow Lite and STM32Cube.AI: 20 KiB flash, 2.3 KiB RAM, 89% accuracy on-device (100 samples).",
     tags: ["Reinforcement Learning", "TFLite", "STM32", "Edge AI"],
     year: "2026",
     github: "https://github.com/imanemn127/RL-Edge-AI-Fault-Detection",

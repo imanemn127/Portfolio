@@ -213,8 +213,8 @@ export function Contact() {
                           />
                           <div style={{ paddingTop: '2rem', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                             <span style={{ fontWeight: 600, fontSize: '0.95rem' }}>Imane MOUMOUN</span>
-                            <span style={{ fontSize: '0.8rem', color: 'rgb(161 161 170)', lineHeight: 1.4 }}>AI &amp; ML Engineer · Mines Saint-Étienne → ENS Paris-Saclay</span>
-                            <span style={{ fontSize: '0.75rem', color: 'rgb(113 113 122)', marginTop: '0.15rem' }}>Morocco · 500+ connections</span>
+                            <span style={{ fontSize: '0.8rem', color: 'rgb(161 161 170)', lineHeight: 1.4 }}>AI Research Student · Mines Saint-Étienne → ENS Paris-Saclay</span>
+                            <span style={{ fontSize: '0.75rem', color: 'rgb(113 113 122)', marginTop: '0.15rem' }}>France · 500+ connections</span>
                           </div>
                         </div>
                       </div>
@@ -327,7 +327,7 @@ export function Contact() {
                     />
                     <div>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#fff", fontFamily: "var(--font-body)", lineHeight: 1.2 }}>Imane Moumoun</div>
-                      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-body)" }}>AI &amp; ML Engineer</div>
+                      <div style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-body)" }}>AI Research Student</div>
                     </div>
                   </div>
                 </div>

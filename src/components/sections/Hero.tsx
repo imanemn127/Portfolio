@@ -77,7 +77,7 @@ function Badge() {
                   <div style={{ position: "relative", zIndex: 10 }}>
                     <h3 style={{ color: "#fff", fontWeight: 800, fontSize: 22, lineHeight: 1.05, letterSpacing: "0.06em", margin: 0 }}>Imane M.</h3>
                     <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 10, letterSpacing: "0.04em", marginTop: 7, lineHeight: 1.6, margin: "7px 0 0" }}>
-                      AI Engineer · builder,<br />researcher &amp; explorer.
+                      AI Research Student · builder,<br />researcher &amp; explorer.
                     </p>
                   </div>
                 </div>
