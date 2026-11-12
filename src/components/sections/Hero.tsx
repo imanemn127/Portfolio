@@ -263,8 +263,7 @@ function Vinyl() {
           <div style={{ width: "clamp(96px,10vw,130px)", height: "clamp(96px,10vw,130px)" }} />
           <div style={{ position: "relative", zIndex: 1, marginTop: 14, textAlign: "center" }}>
             <p style={{ fontSize: 10, color: "#a8a29e", textTransform: "uppercase", letterSpacing: "0.18em", marginBottom: 4 }}>Playlist</p>
-            <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1c1917", lineHeight: 1.2, margin: "0 0 4px" }}>Vibe Coding</h3>
-            <p style={{ fontSize: 11, color: "#a8a29e", margin: "0 0 2px" }}>20+ projects and counting</p>
+            <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1c1917", lineHeight: 1.2, margin: "0 0 4px" }}>10+ Projects</h3>
             <p style={{ fontSize: 11, color: "#78716c", margin: 0, fontStyle: "italic" }}>Learning by building</p>
           </div>
         </div>
